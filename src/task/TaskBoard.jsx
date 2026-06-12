@@ -8,7 +8,7 @@ export default function TaskBoard() {
     id: crypto.randomUUID(),
     title: "Learn React",
     description: "Learn React within 3 week",
-    tag: ["web", "react", "API"],
+    tags: ["web", "react", "API"],
     priority: "High",
     isFavourite: true,
   };
