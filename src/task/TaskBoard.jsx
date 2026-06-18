@@ -44,6 +44,20 @@ export default function TaskBoard() {
     setTaskToUpdate(null);
   }
 
+  function handleDeleteTask(taskId) {
+    const taskAfterDel = tasks.filter((task) => task.id !== taskId);
+    setTasks(taskAfterDel);
+  }
+
+  function handleDeleteAllClick() {
+    tasks.length = 0;
+    setTasks([...tasks]);
+  }
+
+  function handleFavTask(taskId) {
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+  }
+
   return (
     <section className="mb-20" id="tasks">
       {showAddModal && (
@@ -58,8 +72,16 @@ export default function TaskBoard() {
           <SearchTask />
         </div>
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
-          <TaskActions onAddClick={() => setShowAddModal(true)} />
-          <TaskList tasks={tasks} onEdit={handleEditTask} />
+          <TaskActions
+            onAddClick={() => setShowAddModal(true)}
+            onDeleteAllClick={handleDeleteAllClick}
+          />
+          <TaskList
+            tasks={tasks}
+            onEdit={handleEditTask}
+            onDelete={handleDeleteTask}
+            onFav={handleFavTask}
+          />
         </div>
       </div>
     </section>
