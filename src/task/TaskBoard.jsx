@@ -56,6 +56,9 @@ export default function TaskBoard() {
 
   function handleFavTask(taskId) {
     const taskIndex = tasks.findIndex((task) => task.id === taskId);
+    const newTask = [...tasks];
+    newTask[taskIndex].isFavourite = !newTask[taskIndex].isFavourite;
+    setTasks(newTask);
   }
 
   return (
